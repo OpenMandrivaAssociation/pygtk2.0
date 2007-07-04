@@ -1,13 +1,11 @@
-%define version 2.10.4
+%define version 2.10.5
 %define oname pygtk
 #rpmlint wants %mklibname
 Summary:	The sources for the PyGTK2 Python extension modules
 Name:		pygtk2.0
 Version:	%{version}
-Release: %mkrel 2
+Release: %mkrel 1
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%oname/%oname-%{version}.tar.bz2
-#gw from svn: adapt to GtkTooltips API change
-Patch: pygtk-2831-fix-build-with-new-gtk.patch
 License:	LGPL
 Group:		Development/GNOME and GTK+
 BuildRequires:  gtk+2-devel >= 2.9.3
@@ -70,7 +68,6 @@ is faster) and is more complete.
 
 %prep
 %setup -q -n pygtk-%{version}
-%patch -p1
 
 %build
 %configure2_5x  --enable-thread
@@ -85,7 +82,7 @@ XDISPLAY=$(i=1; while [ -f /tmp/.X$i-lock ]; do i=$(($i+1)); done; echo $i)
 %endif
 export DISPLAY=:$XDISPLAY
 #gw checks fail currently
-#make check
+make check
 kill $(cat /tmp/.X$XDISPLAY-lock) || :
 
 %install
