@@ -13,7 +13,7 @@ Group:		Development/GNOME and GTK+
 BuildRequires:  gtk+2-devel >= 2.9.3
 BuildRequires:	libglade2.0-devel 
 BuildRequires:  python-devel >= %{pyver} python-numeric-devel
-BuildRequires:  python-gobject >= 2.12.1
+BuildRequires:  python-gobject-devel >= 2.12.1
 BuildRequires:  python-cairo >= 1.0.0
 %if %mdkversion <= 200600
 BuildRequires:	XFree86-Xvfb
