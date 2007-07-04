@@ -4,8 +4,10 @@
 Summary:	The sources for the PyGTK2 Python extension modules
 Name:		pygtk2.0
 Version:	%{version}
-Release: %mkrel 1
+Release: %mkrel 2
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%oname/%oname-%{version}.tar.bz2
+#gw from svn: adapt to GtkTooltips API change
+Patch: pygtk-2831-fix-build-with-new-gtk.patch
 License:	LGPL
 Group:		Development/GNOME and GTK+
 BuildRequires:  gtk+2-devel >= 2.9.3
@@ -68,6 +70,7 @@ is faster) and is more complete.
 
 %prep
 %setup -q -n pygtk-%{version}
+%patch -p1
 
 %build
 %configure2_5x  --enable-thread
