@@ -1,4 +1,4 @@
-%define version 2.10.6
+%define version 2.11.0
 %define oname pygtk
 #rpmlint wants %mklibname
 Summary:	The sources for the PyGTK2 Python extension modules
@@ -82,7 +82,7 @@ XDISPLAY=$(i=1; while [ -f /tmp/.X$i-lock ]; do i=$(($i+1)); done; echo $i)
 %endif
 export DISPLAY=:$XDISPLAY
 #gw checks fail currently, as Xvfb is broken
-#make check
+make check
 kill $(cat /tmp/.X$XDISPLAY-lock) || :
 
 %install
