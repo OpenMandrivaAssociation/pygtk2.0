@@ -1,4 +1,4 @@
-%define version 2.11.0
+%define version 2.12.0
 %define oname pygtk
 #rpmlint wants %mklibname
 Summary:	The sources for the PyGTK2 Python extension modules
