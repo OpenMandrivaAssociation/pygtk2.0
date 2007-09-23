@@ -4,7 +4,7 @@
 Summary:	The sources for the PyGTK2 Python extension modules
 Name:		pygtk2.0
 Version:	%{version}
-Release: %mkrel 1
+Release: %mkrel 2
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%oname/%oname-%{version}.tar.bz2
 License:	LGPL
 Group:		Development/GNOME and GTK+
@@ -31,6 +31,7 @@ Requires:  python-gobject
 Requires:  python-cairo
 Conflicts:	pygtk < 0.6.11
 Provides: %name-wrapper
+Provides: pygtk2 = %{version}-%{release}
 Obsoletes: %name-wrapper
 
 %description
