@@ -4,7 +4,7 @@
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
 Version:	%{version}
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		http://www.pygtk.org
@@ -51,6 +51,8 @@ Group:		Development/GNOME and GTK+
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk2-devel
 Requires:	python-devel >= %{pyver}
+Requires: python-cairo-devel
+Requires:  python-gobject-devel
 
 %description devel
 This package contains files required to build wrappers for GTK+ addon
