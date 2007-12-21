@@ -35,6 +35,7 @@ Conflicts:	pygtk < 0.6.11
 Provides:	%{name}-wrapper
 Provides:	pygtk2 = %{version}-%{release}
 Obsoletes:	%{name}-wrapper
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 PyGTK is an extension module for python that gives you access to the GTK+
