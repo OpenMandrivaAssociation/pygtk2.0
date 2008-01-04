@@ -1,16 +1,14 @@
-%define version 2.12.0
+%define version 2.12.1
 %define oname pygtk
 #rpmlint wants %mklibname
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
 Version:	%{version}
-Release:	%mkrel 3
+Release:	%mkrel 1
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		http://www.pygtk.org
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%oname/%{version}/%oname-%{version}.tar.bz2
-# (tpg) http://bugzilla.gnome.org/show_bug.cgi?id=479012
-Patch0:		pygtk-treeview-convert.patch
 BuildRequires:  gtk+2-devel >= 2.9.3
 BuildRequires:	libglade2.0-devel 
 BuildRequires:  python-devel >= %{pyver} python-numeric-devel
@@ -82,7 +80,6 @@ This package contains example programs and demos for %{name}.
 
 %prep
 %setup -q -n pygtk-%{version}
-%patch0 -p0 -b .treeview
 
 %build
 %configure2_5x  --enable-thread --enable-numpy
