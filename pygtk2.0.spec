@@ -4,7 +4,7 @@
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
 Version:	%{version}
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		http://www.pygtk.org
@@ -33,7 +33,7 @@ Conflicts:	pygtk < 0.6.11
 Provides:	%{name}-wrapper
 Provides:	pygtk2 = %{version}-%{release}
 Obsoletes:	%{name}-wrapper
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 PyGTK is an extension module for python that gives you access to the GTK+
