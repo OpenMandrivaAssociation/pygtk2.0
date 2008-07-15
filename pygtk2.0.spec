@@ -18,11 +18,7 @@ BuildRequires:  python-cairo-devel >= 1.4.0
 %else
 BuildRequires:  python-cairo >= 1.0.0
 %endif
-%if %mdkversion <= 200600
-BuildRequires:	XFree86-Xvfb
-%else
 BuildRequires:  x11-server-xvfb
-%endif
 BuildRequires:  gnome-common
 #BuildRequires:  gtk-doc
 BuildRequires:  libxslt-proc
