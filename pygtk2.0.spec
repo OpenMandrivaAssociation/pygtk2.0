@@ -4,7 +4,7 @@
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
 Version:	%{version}
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		http://www.pygtk.org
@@ -50,7 +50,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	gtk2-devel
 Requires:	python-devel >= %{pyver}
 Requires: python-cairo-devel
-Requires:  python-gobject-devel
+Requires:  python-gobject-devel >= 2.15.0
 
 %description devel
 This package contains files required to build wrappers for GTK+ addon
@@ -103,6 +103,9 @@ rm -rf %{buildroot}
 
 #(tpg) remove svn form docs
 rm -rf `find -name .svn` %{buildroot}%{_docdir}
+#gw this is now in python-gobject-devel
+rm -f %buildroot%_bindir/pygtk-codegen-2.0
+
 
 %files
 %defattr(-,root,root)
@@ -121,7 +124,6 @@ rm -rf `find -name .svn` %{buildroot}%{_docdir}
 
 %files devel
 %defattr(-,root,root)
-%{_bindir}/pygtk-codegen-2.0
 %{_includedir}/pygtk-2.0/*
 %{py_platsitedir}/gtk-2.0/gtk/_*.la
 %{py_platsitedir}/gtk-2.0/atk*.la
