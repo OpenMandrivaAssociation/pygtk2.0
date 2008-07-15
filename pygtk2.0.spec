@@ -86,16 +86,7 @@ This package contains example programs and demos for %{name}.
 %make
 
 %check
-XDISPLAY=$(i=1; while [ -f /tmp/.X$i-lock ]; do i=$(($i+1)); done; echo $i)
-%if %mdkversion <= 200600
-%{_prefix}/X11R6/bin/Xvfb :$XDISPLAY &
-%else
-%{_bindir}/Xvfb :$XDISPLAY &
-%endif
-export DISPLAY=:$XDISPLAY
-#gw checks fail currently, as Xvfb is broken
-make check
-kill $(cat /tmp/.X$XDISPLAY-lock) || :
+%_bindir/xvfb-run make check
 
 %install
 rm -rf %{buildroot}
