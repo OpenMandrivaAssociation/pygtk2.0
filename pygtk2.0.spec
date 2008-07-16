@@ -4,7 +4,7 @@
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
 Version:	%{version}
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		http://www.pygtk.org
@@ -82,7 +82,7 @@ This package contains example programs and demos for %{name}.
 %make
 
 %check
-%_bindir/xvfb-run make check
+%_bindir/xvfb-run -a make check
 
 %install
 rm -rf %{buildroot}
@@ -90,9 +90,6 @@ rm -rf %{buildroot}
 
 #(tpg) remove svn form docs
 rm -rf `find -name .svn` %{buildroot}%{_docdir}
-#gw this is now in python-gobject-devel
-rm -f %buildroot%_bindir/pygtk-codegen-2.0
-
 
 %files
 %defattr(-,root,root)
@@ -111,6 +108,7 @@ rm -f %buildroot%_bindir/pygtk-codegen-2.0
 
 %files devel
 %defattr(-,root,root)
+%_bindir/pygtk-codegen-2.0
 %{_includedir}/pygtk-2.0/*
 %{py_platsitedir}/gtk-2.0/gtk/_*.la
 %{py_platsitedir}/gtk-2.0/atk*.la
