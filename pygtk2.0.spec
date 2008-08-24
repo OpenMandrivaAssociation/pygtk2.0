@@ -1,10 +1,10 @@
-%define version 2.12.1
+%define version 2.13.0
 %define oname pygtk
 #rpmlint wants %mklibname
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
 Version:	%{version}
-Release:	%mkrel 5
+Release:	%mkrel 1
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		http://www.pygtk.org
@@ -115,9 +115,6 @@ rm -rf `find -name .svn` %{buildroot}%{_docdir}
 %{py_platsitedir}/gtk-2.0/pango*.la
 %dir %{_datadir}/pygtk
 %dir %{_datadir}/pygtk/2.0
-%dir %{_datadir}/pygtk/2.0/codegen
-%attr(755,root,root) %{_datadir}/pygtk/2.0/codegen/*.py
-%{_datadir}/pygtk/2.0/codegen/*.py[co]
 %dir %{_datadir}/pygtk/2.0/defs
 %{_datadir}/pygtk/2.0/defs/*.defs
 %{_datadir}/pygtk/2.0/defs/pangocairo.override
