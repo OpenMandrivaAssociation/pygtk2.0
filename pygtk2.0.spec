@@ -83,8 +83,11 @@ This package contains example programs and demos for %{name}.
 %configure2_5x  --enable-thread --enable-numpy
 %make
 
-%check
-%_bindir/xvfb-run -a make check
+#%check
+# Disabled due to http://bugzilla.gnome.org/show_bug.cgi?id=565593 :
+# check fails against Python 2.6 due to Python issue #4244 - AdamW
+# 2008/12
+#%_bindir/xvfb-run -a make check
 
 %install
 rm -rf %{buildroot}
