@@ -8,7 +8,7 @@ Release:	%mkrel 2
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		http://www.pygtk.org
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%oname/%{version}/%oname-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/%oname/%oname-%{version}.tar.bz2
 Patch0:     pygtk-2.13.0-fix_format_string.diff
 BuildRequires:  gtk+2-devel >= 2.9.3
 BuildRequires:	libglade2.0-devel 
