@@ -1,4 +1,4 @@
-%define version 2.14.1
+%define version 2.15.0
 %define oname pygtk
 #rpmlint wants %mklibname
 Summary:	Python bindings for the GTK+2 widget set
@@ -12,7 +12,8 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/%oname/%oname-%{version}.tar.bz2
 Patch0:     pygtk-2.13.0-fix_format_string.diff
 BuildRequires:  gtk+2-devel >= 2.9.3
 BuildRequires:	libglade2.0-devel 
-BuildRequires:  python-devel >= %{pyver} python-numeric-devel
+BuildRequires:  python-devel >= %{pyver}
+BuildRequires:  python-numpy-devel
 BuildRequires:  python-gobject-devel >= 2.12.1
 %if %mdkversion >= 200810
 BuildRequires:  python-cairo-devel >= 1.4.0
@@ -23,7 +24,7 @@ BuildRequires:  x11-server-xvfb
 BuildRequires:  gnome-common
 #BuildRequires:  gtk-doc
 BuildRequires:  libxslt-proc
-Requires: 	python-numeric
+Requires:  python-numpy
 Requires:	python-gobject
 Requires:	python-cairo
 Conflicts:	pygtk < 0.6.11
