@@ -1,4 +1,4 @@
-%define version 2.21.0
+%define version 2.22.0
 %define oname pygtk
 #rpmlint wants %mklibname
 Summary:	Python bindings for the GTK+2 widget set
