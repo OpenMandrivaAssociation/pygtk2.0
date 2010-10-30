@@ -4,7 +4,7 @@
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
 Version:	%{version}
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		http://www.pygtk.org
@@ -23,7 +23,7 @@ BuildRequires:  x11-server-xvfb
 BuildRequires:  gnome-common
 #BuildRequires:  gtk-doc
 BuildRequires:  libxslt-proc
-Requires:  python-numpy
+Requires:	python-numpy
 Requires:	python-gobject
 Requires:	python-cairo
 Conflicts:	pygtk < 0.6.11
