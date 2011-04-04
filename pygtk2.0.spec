@@ -1,24 +1,20 @@
-%define version 2.22.0
+%define version 2.24.0
 %define oname pygtk
 #rpmlint wants %mklibname
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
 Version:	%{version}
-Release:	%mkrel 3
+Release:	%mkrel 1
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		http://www.pygtk.org
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%oname/%oname-%{version}.tar.bz2
-BuildRequires:  gtk+2-devel >= 2.9.3
+BuildRequires:  gtk+2-devel >= 2.24.0
 BuildRequires:	libglade2.0-devel 
-BuildRequires:  python-devel >= %{pyver}
+BuildRequires:  python-devel
 BuildRequires:  python-numpy-devel
-BuildRequires:  python-gobject-devel >= 2.12.1
-%if %mdkversion >= 200810
+BuildRequires:  python-gobject-devel >= 2.21.3
 BuildRequires:  python-cairo-devel >= 1.4.0
-%else
-BuildRequires:  python-cairo >= 1.0.0
-%endif
 BuildRequires:  x11-server-xvfb
 BuildRequires:  gnome-common
 #BuildRequires:  gtk-doc
