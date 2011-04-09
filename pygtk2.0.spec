@@ -4,7 +4,7 @@
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
 Version:	%{version}
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		http://www.pygtk.org
@@ -77,7 +77,7 @@ This package contains example programs and demos for %{name}.
 
 %build
 %configure2_5x  --enable-thread --enable-numpy
-%make
+%make LIBS="`python-config --libs`"
 
 #%check
 # Disabled due to http://bugzilla.gnome.org/show_bug.cgi?id=565593 :
