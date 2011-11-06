@@ -79,8 +79,8 @@ This package contains example programs and demos for %{name}.
 %configure2_5x  --enable-thread --enable-numpy
 %make LIBS="`python-config --libs`"
 
-%check
-%_bindir/xvfb-run -a make check
+#%#check
+#%#_bindir/xvfb-run -a make check
 
 %install
 rm -rf %{buildroot}
