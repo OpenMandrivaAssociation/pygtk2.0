@@ -1,32 +1,29 @@
-%define version 2.24.0
 %define oname pygtk
 #rpmlint wants %mklibname
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
-Version:	%{version}
-Release:	%mkrel 3
+Version:	2.24.0
+Release:	4
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 URL:		http://www.pygtk.org
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%oname/%oname-%{version}.tar.bz2
-BuildRequires:  gtk+2-devel >= 2.24.0
-BuildRequires:	libglade2.0-devel 
-BuildRequires:  python-devel
-BuildRequires:  python-numpy-devel
-BuildRequires:  python-gobject-devel >= 2.21.3
-BuildRequires:  python-cairo-devel >= 1.4.0
-BuildRequires:  x11-server-xvfb
+
 BuildRequires:  gnome-common
-#BuildRequires:  gtk-doc
-BuildRequires:  libxslt-proc
+BuildRequires:  xsltproc
+#BuildRequires:  x11-server-xvfb
+BuildRequires:  python-numpy-devel
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(libglade-2.0)
+BuildRequires:  pkgconfig(python)
+BuildRequires:  pkgconfig(pygobject-2.0)
+BuildRequires:  pkgconfig(pycairo)
+
 Requires:	python-numpy
 Requires:	python-gobject
 Requires:	python-cairo
-Conflicts:	pygtk < 0.6.11
-Provides:	%{name}-wrapper
+
 Provides:	pygtk2 = %{version}-%{release}
-Obsoletes:	%{name}-wrapper
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 PyGTK is an extension module for python that gives you access to the GTK+
@@ -36,14 +33,9 @@ in python with PyGTK (within reason), but with all of python's benefits.
 This new release includes GTK2 support.
 
 %package devel
-Version:	%{version}
 Summary:	Files needed to build wrappers for GTK+ addon libraries
 Group:		Development/GNOME and GTK+
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk2-devel
-Requires:	python-devel >= %{pyver}
-Requires: python-cairo-devel
-Requires:  python-gobject-devel >= 2.15.0
 
 %description devel
 This package contains files required to build wrappers for GTK+ addon
@@ -52,7 +44,6 @@ libraries so that they interoperate with pygtk.
 This new release includes GTK2 support.
 
 %package libglade
-Version:	%{version}
 Summary:	A wrapper for the libglade library for use with PyGTK
 Group:		Development/GNOME and GTK+
 Requires:	%{name} = %{version}-%{release}
@@ -63,7 +54,6 @@ library similar to the pyglade module, except that it is written in C (so
 is faster) and is more complete.
 
 %package demos
-Version:	%{version}
 Summary:	Examples and demos for %{name}
 Group:		Development/GNOME and GTK+
 Requires:	%{name}-devel = %{version}-%{release}
@@ -76,21 +66,23 @@ This package contains example programs and demos for %{name}.
 %apply_patches
 
 %build
-%configure2_5x  --enable-thread --enable-numpy
+%configure2_5x  \
+	--enable-thread \
+	--enable-numpy
+
 %make LIBS="`python-config --libs`"
 
 #%#check
 #%#_bindir/xvfb-run -a make check
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
+find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 #(tpg) remove svn form docs
 rm -rf `find -name .svn` %{buildroot}%{_docdir}
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS NEWS README MAPPING ChangeLog 
 %dir %{py_platsitedir}/gtk-2.0/gtk/
 %{py_platsitedir}/gtk-2.0/gtk/*.py*
@@ -100,17 +92,11 @@ rm -rf `find -name .svn` %{buildroot}%{_docdir}
 %{py_platsitedir}/gtk-2.0/pango*.so
 
 %files libglade
-%defattr(-,root,root)
 %{py_platsitedir}/gtk-2.0/gtk/glade.so
-%{py_platsitedir}/gtk-2.0/gtk/glade.la
 
 %files devel
-%defattr(-,root,root)
 %_bindir/pygtk-codegen-2.0
 %{_includedir}/pygtk-2.0/*
-%{py_platsitedir}/gtk-2.0/gtk/_*.la
-%{py_platsitedir}/gtk-2.0/atk*.la
-%{py_platsitedir}/gtk-2.0/pango*.la
 %dir %{_datadir}/pygtk
 %dir %{_datadir}/pygtk/2.0
 %dir %{_datadir}/pygtk/2.0/defs
@@ -120,7 +106,6 @@ rm -rf `find -name .svn` %{buildroot}%{_docdir}
 %{_datadir}/gtk-doc/html/pygtk/
 
 %files demos
-%defattr(644,root,root,755)
 %doc examples/{atk,glade,gobject,gtk,ide,pango,simple}
 %dir %{_libdir}/pygtk/2.0/demos
 %dir %{_libdir}/pygtk/2.0/demos/images
@@ -131,5 +116,3 @@ rm -rf `find -name .svn` %{buildroot}%{_docdir}
 %{_libdir}/pygtk/2.0/demos/*.py[co]
 %{_libdir}/pygtk/2.0/demos/images/*
 
-%clean
-rm -rf %{buildroot}
