@@ -1,28 +1,26 @@
+%define url_ver %(echo %{version}|cut -d. -f1,2)
 %define oname pygtk
 #rpmlint wants %mklibname
+
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
 Version:	2.24.0
 Release:	5
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
-URL:		http://www.pygtk.org
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%oname/%oname-%{version}.tar.bz2
-
+Url:		http://www.pygtk.org
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/pygtk/%{url_ver}/%{oname}-%{version}.tar.bz2
 BuildRequires:	gnome-common
 BuildRequires:	xsltproc
-#BuildRequires:  x11-server-xvfb
 BuildRequires:	python-numpy-devel
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(libglade-2.0)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(pygobject-2.0)
 BuildRequires:	pkgconfig(pycairo)
-
 Requires:	python-numpy
 Requires:	python-gobject
 Requires:	python-cairo
-
 Provides:	pygtk2 = %{version}-%{release}
 
 %description
@@ -62,7 +60,7 @@ Requires:	%{name}-devel = %{version}-%{release}
 This package contains example programs and demos for %{name}.
 
 %prep
-%setup -q -n pygtk-%{version}
+%setup -qn %{oname}-%{version}
 %apply_patches
 
 %build
@@ -114,3 +112,4 @@ rm -rf `find -name .svn` %{buildroot}%{_docdir}
 %attr(755,root,root) %{_libdir}/pygtk/2.0/demos/*.py
 %{_libdir}/pygtk/2.0/demos/*.py[co]
 %{_libdir}/pygtk/2.0/demos/images/*
+
