@@ -5,7 +5,7 @@
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
 Version:	2.24.0
-Release:	12
+Release:	13
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 Url:		http://www.pygtk.org
@@ -33,12 +33,12 @@ This new release includes GTK2 support.
 
 %files
 %doc AUTHORS NEWS README MAPPING ChangeLog 
-%dir %{py_platsitedir}/gtk-2.0/gtk/
-%{py_platsitedir}/gtk-2.0/gtk/*.py*
-%{py_platsitedir}/gtk-2.0/gtk/_*.so
-%{py_platsitedir}/gtk-2.0/gtkunixprint*
-%{py_platsitedir}/gtk-2.0/atk*.so
-%{py_platsitedir}/gtk-2.0/pango*.so
+%dir %{py2_platsitedir}/gtk-2.0/gtk/
+%{py2_platsitedir}/gtk-2.0/gtk/*.py*
+%{py2_platsitedir}/gtk-2.0/gtk/_*.so
+%{py2_platsitedir}/gtk-2.0/gtkunixprint*
+%{py2_platsitedir}/gtk-2.0/atk*.so
+%{py2_platsitedir}/gtk-2.0/pango*.so
 
 #----------------------------------------------------------------------------
 
@@ -77,7 +77,7 @@ library similar to the pyglade module, except that it is written in C (so
 is faster) and is more complete.
 
 %files libglade
-%{py_platsitedir}/gtk-2.0/gtk/glade.so
+%{py2_platsitedir}/gtk-2.0/gtk/glade.so
 
 #----------------------------------------------------------------------------
 
@@ -107,11 +107,12 @@ This package contains example programs and demos for %{name}.
 %patch0 -p1
 
 %build
+export PYTHON=%{__python2}
 %configure2_5x  \
 	--enable-thread \
 	--enable-numpy
 
-%make LIBS="`python-config --libs`"
+%make LIBS="`python2-config --libs`"
 
 %install
 %makeinstall_std
