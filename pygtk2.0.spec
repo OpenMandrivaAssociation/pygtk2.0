@@ -5,7 +5,7 @@
 Summary:	Python bindings for the GTK+2 widget set
 Name:		pygtk2.0
 Version:	2.24.0
-Release:	16
+Release:	17
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
 Url:		http://www.pygtk.org
@@ -19,9 +19,9 @@ BuildRequires:	pkgconfig(libglade-2.0)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(pygobject-2.0)
 BuildRequires:	pkgconfig(pycairo)
-Requires:	python-numpy
-Requires:	python-gobject
-Requires:	python-cairo
+Requires:	python2-numpy
+Requires:	python2-gobject
+Requires:	python2-cairo
 Provides:	pygtk2 = %{EVRD}
 
 %description
