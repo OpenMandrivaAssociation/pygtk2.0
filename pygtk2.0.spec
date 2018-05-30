@@ -1,5 +1,6 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 %define oname pygtk
+%define _python_bytecompile_build  %nil
 #rpmlint wants %mklibname
 
 Summary:	Python bindings for the GTK+2 widget set
