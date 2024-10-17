@@ -9,7 +9,7 @@ Version:	2.24.0
 Release:	22
 License:	LGPLv2+
 Group:		Development/GNOME and GTK+
-Url:		http://www.pygtk.org
+Url:		https://www.pygtk.org
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/pygtk/%{url_ver}/%{oname}-%{version}.tar.bz2
 Patch0:		pygtk2.0-2.24.0-pango-leaks.patch
 BuildRequires:	gnome-common
